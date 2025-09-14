@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Manual Profissional Laravel — Comandos & Fluxo de Carreira</title>
+  <meta name="author" content="Guia Laravel" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+  <header>
+    <div class="brand">
+      <button id="menuToggle">☰</button>
+      <div class="logo">L</div>
+      <div>
+        Manual Profissional Laravel
+        <div style="font-size:12px;color:#cbd5e1;font-weight:500">Models, Controller e Migrations</div>
+      </div>
+    </div>
+    <div class="header-actions muted">Última atualização: <strong>2025-09-13</strong></div>
+  </header>
+
+  <!-- Overlay para mobile -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- SIDEBAR MENU -->
+  <nav id="sidebar" class="sidebar" aria-label="Navegação">
+    <div class="toggle" id="menuToggleInside" title="Alternar menu" role="button" tabindex="0">
+    </div>
+
+    <div class="section-title">Índice rápido ▶️</div>
+    <a class="item active" href="#top">Introdução & Objetivo</a>
+    <a class="item" href="#sua-lista">Sua lista original</a>
+    <a class="item" href="#instalacao">Instalação</a>
+    <a class="item" href="#artisan">Comandos Artisan (completo)</a>
+    <a class="item" href="#make-commands">Make: comandos (detalhados)</a>
+    <a class="item" href="#migrations">Migrations</a>
+    <a class="item" href="#seeders">Seeders & Factories</a>
+    <a class="item" href="#queues">Filas (Queue) & Jobs</a>
+    <a class="item" href="#events-tests">Eventos & Testes</a>
+    <a class="item" href="#caching">Cache & Otimização</a>
+    <a class="item" href="#filament">Filament (Painel)</a>
+    <a class="item" href="#breeze">Breeze (Auth)</a>
+    <a class="item" href="#deploy">Deploy & Produção</a>
+    <a class="item" href="#roadmap">Roteiro de Carreira (passo-a-passo)</a>
+    <a class="item" href="#ref">Referências</a>
+  </nav>
+
+  <!-- MAIN -->
+  <main id="main" class="">
+    <div class="container">
+
+      <!-- INTRO -->
+      <section id="top" class="card">
+        <h1>Manual Profissional: Comandos Laravel — do início ao fim</h1>
+        <p class="lead">Este documento organiza e explica, de forma profissional, todos os comandos relevantes do Laravel (Artisan, Composer, migrations, fila, testes, deploy, pacotes e mais). Mantive <strong>exatamente</strong> a sua lista original e adicionei dezenas de comandos complementares, exemplos de uso e um roteiro prático de carreira.</p>
+        <div style="margin-top:12px">
+          <span class="badge">Completo</span>
+          <span style="margin-left:8px" class="muted">Preserva sua lista original + amplia com melhores práticas e comandos avançados</span>
+        </div>
+      </section>
+
+      <!-- SUA LISTA ORIGINAL (INTEGRAÇÃO) -->
+      <section id="sua-lista" class="card">
+        <h2>Sua lista original (mantida sem alterações)</h2>
+        <p class="muted">Abaixo está a sua lista de comandos tal como você enviou — nada foi removido, apenas complementado em seções posteriores.</p>
+        <pre class="cmd" aria-label="Suas instruções originais" tabindex="0">composer create-project laravel/laravel:^10.0 ./ (PARA INSTALAR A VERSAO 10 DO LARAVEL)
+composer create-project laravel/laravel exemplo  (CRIA UM PROJETO COM A ULTIMA VERSAO DO LARAVEL)
+php artisan --version 					(MOSTRA A VERSAO DO FRAMEWORK DO LARAVEL)
+
+
+php artisankey:generate     (GERA A CHAVE NO ARQUIVO .env APP_KEY=base64dfnsifniusdrs....)
+
+php artisan make:controller ProdutoControllers --resource (CRIA UM ARQUIVO COM AS ROTA PRONTAS PARA CRIAR EDITAR DELETAR TABELAAS app/http/controller)
+php artisan make:model Categoria --migration --controller --resource    (CRIA TODOS OS ARQUIVOS JA PARA MANIPULAR controller migrations models)
+
+php artisan make:migration create_produtos_table  (CRIA UMA TABELA EM database/migrations)
+php artisan make:migration alterar_nome_tabela_produtos (CRIE ESTA TABELA PARA MUDAR O NOME DE OUTRA TABELA DENTRO DO SEU CODIGO)
+	
+php artisan migrate:reset   (RESETA TODAS AS MIGRAÇOES)
+php artisan migrate:refresh (RESETA E REINICIA OS MIGRATION DENTRO DO BANCO DE DADOS)
+php artisan migrate:fresh       (DELETA TODO O BANCO DE DADOS E REINSTALA AS MIGRAÇOES)
+
+php artisan migrate  		(EXECUTA O BANCO DE DADOS COM OS PRODUTOS)
+php artisan migrate:rollback	(DEFAZER A ULTIMA MIGRAÇAO)
+php artisan migrate:status      (STATUS DO BANCO SE FOI EXECUTADO OU NAO)
+composer upgrade     (ATUALIZA O COMPOSER)
+
+composer require doctrine/dbal  (PACOTE PARA MODIFICAR AS TABELAS E COLUNAS EXCLUIR COLUNAS)
+
+php artisan make:seeder UsersSeeder
+php artisan db:seed --class=UsersSeeder
+
+php artisan make:factory CategoriaFactory
+php artisan db:seed
+
+
+composer require laravellegends/pt-br-validator
+
+composer global require "filament/filament:^3.0" --with-all-dependencies  (globalmente no seu sistema não recomendado)
+composer require filament/filament:"^2.0"  (BAIXA O FILAMENT PARA O PROJETO confira a versao)
+php artisan filament:install               (INSTALA O FILAMENT NO PROJETO)
+php artisan filament:install --panels     (CRIA UMA ROTA PARA O ADM)
+php artisan make:filament-user             (CRIA UM ADMIN DO FILAMENT NO TERMINAL BASTA DIGITAR O NOME EMAIL E SENHA)
+php artisan make:filament-resource Produto  (Isso vai gerar as telas de listagem, formulário e edição automaticamente, já puxando os dados do MySQL)
+
+composer require laravel/breeze --dev      (BAIXA O BREEZE PARA O PROJETO)-cria rotas como /login /registro /dashboard /profile
+php artisan breeze:install blade	   (INSTALA O BREEZE NO PROJETO)
+php artisan migrate			   (ATUALIZE O BANCO DE DADOS)
+
+composer require darryIdecode/cart</pre>
+        <div class="note">Sua lista original está preservada acima. A próxima seção amplia e organiza tudo com explicações e comandos adicionais.</div>
+      </section>
+
+      <!-- INSTALAÇÃO -->
+      <section id="instalacao" class="card">
+        <h2>Instalação & Setup inicial</h2>
+        <p class="muted">Passo a passo para começar um projeto Laravel (localmente e com boas práticas).</p>
+
+        <div class="grid-2" style="margin-top:12px">
+          <div>
+            <h3>Criação do projeto</h3>
+            <ul>
+              <li><code>composer create-project laravel/laravel:^10.0 ./</code> — instala a versão 10 num diretório atual.</li>
+              <li><code>composer create-project laravel/laravel exemplo</code> — cria projeto com a última versão estável.</li>
+              <li><code>composer install</code> — após clonar um repositório, instala dependências.</li>
+            </ul>
+            <h3>Chaves e ambiente</h3>
+            <ul>
+              <li><code>php artisan key:generate</code> — gera <code>APP_KEY</code> no arquivo <code>.env</code>.</li>
+              <li>Edite <code>.env</code> (DB_CONNECTION, DB_DATABASE, DB_USERNAME, DB_PASSWORD, MAIL_*, etc.).</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>Executando localmente</h3>
+            <ul>
+              <li><code>php artisan serve</code> — sobe servidor local (http://127.0.0.1:8000).</li>
+              <li>Use <code>php -S 127.0.0.1:8000 -t public</code> se necessário.</li>
+            </ul>
+
+            <h3>Boas práticas iniciais</h3>
+            <ul>
+              <li>Nunca comite o arquivo <code>.env</code> no git.</li>
+              <li>Use <code>.env.example</code> como referência de variáveis.</li>
+              <li>Versione migrations e seeders no repositório.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ARTISAN: lista -->
+      <section id="artisan" class="card">
+        <h2>Comandos Artisan — coleção completa e explicada</h2>
+        <p class="muted">Abaixo agrupei comandos por categoria (geral, make, migrate, cache, queue, eventos, etc). Use <code>php artisan list</code> para ver tudo no seu projeto. Fonte: documentação Laravel e cheatsheets. :contentReference[oaicite:0]{index=0}</p>
+
+        <h3>Comandos gerais</h3>
+        <table>
+          <thead><tr><th>Comando</th><th>O que faz</th></tr></thead>
+          <tbody>
+            <tr><td><code>php artisan list</code></td><td>Lista todos os comandos Artisan disponíveis.</td></tr>
+            <tr><td><code>php artisan help &lt;comando&gt;</code></td><td>Mostra a ajuda detalhada do comando.</td></tr>
+            <tr><td><code>php artisan --version</code></td><td>Mostra versão do framework.</td></tr>
+            <tr><td><code>php artisan about</code></td><td>Mostra informações básicas sobre o ambiente Laravel (versões, paths).</td></tr>
+            <tr><td><code>php artisan serve</code></td><td>Sobe servidor local de desenvolvimento.</td></tr>
+            <tr><td><code>php artisan tinker</code></td><td>Console REPL para testar código PHP/Laravel.</td></tr>
+            <tr><td><code>php artisan vendor:publish</code></td><td>Publica assets/config/views de pacotes instalados.</td></tr>
+            <tr><td><code>php artisan storage:link</code></td><td>Cria link simbólico <code>public/storage</code> apontando para <code>storage/app/public</code>.</td></tr>
+          </tbody>
+        </table>
+
+        <h3 style="margin-top:12px">Migrations & Banco de Dados</h3>
+        <table>
+          <thead><tr><th>Comando</th><th>Útil quando...</th></tr></thead>
+          <tbody>
+            <tr><td><code>php artisan make:migration &lt;nome&gt;</code></td><td>Criar migration (ex: create_produtos_table).</td></tr>
+            <tr><td><code>php artisan migrate</code></td><td>Executa as migrations pendentes.</td></tr>
+            <tr><td><code>php artisan migrate:status</code></td><td>Verifica quais migrations foram aplicadas.</td></tr>
+            <tr><td><code>php artisan migrate:rollback</code></td><td>Desfaz última "batch" de migrations.</td></tr>
+            <tr><td><code>php artisan migrate:rollback --step=2</code></td><td>Desfaz as últimas 2 batches.</td></tr>
+            <tr><td><code>php artisan migrate:reset</code></td><td>Desfaz todas as migrations (volta ao estado inicial).</td></tr>
+            <tr><td><code>php artisan migrate:refresh</code></td><td>Rollback + reaplica todas migrations (útil para testes locais).</td></tr>
+            <tr><td><code>php artisan migrate:fresh</code></td><td>Drop todas tabelas e roda migrations (apaga dados).</td></tr>
+            <tr><td><code>php artisan migrate:install</code></td><td>Instala a tabela de controle de migrations (se necessário).</td></tr>
+          </tbody>
+        </table>
+
+        <h3 style="margin-top:12px">Cache, Config e Otimização</h3>
+        <table>
+          <thead><tr><th>Comando</th><th>Uso/Por que</th></tr></thead>
+          <tbody>
+            <tr><td><code>php artisan cache:clear</code></td><td>Limpa cache da aplicação.</td></tr>
+            <tr><td><code>php artisan config:clear</code></td><td>Limpa cache das configurações (útil após mudar .env).</td></tr>
+            <tr><td><code>php artisan config:cache</code></td><td>Cria cache das configs para melhorar performance em produção.</td></tr>
+            <tr><td><code>php artisan route:cache</code></td><td>Cria cache de rotas; muito recomendado para produção (rotas fechadas).</td></tr>
+            <tr><td><code>php artisan route:clear</code></td><td>Limpa cache de rotas.</td></tr>
+            <tr><td><code>php artisan view:clear</code></td><td>Limpa cache de views compiladas.</td></tr>
+            <tr><td><code>php artisan view:cache</code></td><td>Compila views Blade em cache (para produção).</td></tr>
+            <tr><td><code>php artisan optimize</code></td><td>Otimiza autoload, config e cache (use com cuidado; ver docs). :contentReference[oaicite:1]{index=1}</td></tr>
+            <tr><td><code>php artisan optimize:clear</code></td><td>Limpa todos os caches de otimização.</td></tr>
+          </tbody>
+        </table>
+
+        <h3 style="margin-top:12px">Queues / Jobs</h3>
+        <table>
+          <thead><tr><th>Comando</th><th>Quando usar</th></tr></thead>
+          <tbody>
+            <tr><td><code>php artisan queue:work</code></td><td>Inicia worker que processa jobs (em background).</td></tr>
+            <tr><td><code>php artisan queue:listen</code></td><td>Escuta fila e processa jobs (modo menos performático que work).</td></tr>
+            <tr><td><code>php artisan queue:restart</code></td><td>Faz com que workers reiniciem (útil ao fazer deploy).</td></tr>
+            <tr><td><code>php artisan queue:failed</code></td><td>Lista jobs que falharam.</td></tr>
+            <tr><td><code>php artisan queue:failed-table</code></td><td>Gera migration para tabela de failures.</td></tr>
+            <tr><td><code>php artisan queue:retry &lt;id&gt;</code></td><td>Tenta reexecutar job que falhou.</td></tr>
+            <tr><td><code>php artisan queue:flush</code></td><td>Remove todos os failed jobs.</td></tr>
+          </tbody>
+        </table>
+
+        <h3 style="margin-top:12px">Eventos, Listeners, Mail, Notifications</h3>
+        <table>
+          <thead><tr><th>Comando</th><th>O que gera</th></tr></thead>
+          <tbody>
+            <tr><td><code>php artisan make:event NomeEvento</code></td><td>Cria evento.</td></tr>
+            <tr><td><code>php artisan make:listener NomeListener</code></td><td>Cria listener (pode ser ligado a um evento).</td></tr>
+            <tr><td><code>php artisan event:list</code></td><td>Lista eventos e listeners registrados.</td></tr>
+            <tr><td><code>php artisan event:generate</code></td><td>Gera listeners "stub" para eventos existentes.</td></tr>
+            <tr><td><code>php artisan make:mail NomeMail</code></td><td>Cria classe Mailable para envio de e-mails.</td></tr>
+            <tr><td><code>php artisan make:notification NomeNotification</code></td><td>Cria notificação (mail, database, broadcast etc.).</td></tr>
+          </tbody>
+        </table>
+
+        <h3 style="margin-top:12px">Outros úteis</h3>
+        <ul>
+          <li><code>php artisan route:list</code> — mostra todas as rotas (muito útil para debugging).</li>
+          <li><code>php artisan storage:link</code> — cria link para uploads públicos.</li>
+          <li><code>php artisan migrate:status</code> — mostra status de cada migration.</li>
+          <li><code>php artisan schedule:run</code> / <code>schedule:list</code> — para trabalhar com <code>kernel/schedule</code>.</li>
+        </ul>
+      </section>
+
+      <!-- MAKE COMMANDS DETAIL -->
+      <section id="make-commands" class="card">
+        <h2>Make Commands — criar arquivos automaticamente</h2>
+        <p class="muted">A lista <code>make:</code> gera artefatos padrão com esqueleto pronto. Útil para acelerar o desenvolvimento. (Exemplos e opções abaixo.) :contentReference[oaicite:2]{index=2}</p>
+
+        <div class="grid-2">
+          <div>
+            <h3>Principais make:*</h3>
+            <ul>
+              <li><code>php artisan make:controller NomeController --resource</code> — controller com métodos index/create/store/show/edit/update/destroy.</li>
+              <li><code>php artisan make:model NomeModel --migration</code> — cria model + migration.</li>
+              <li><code>php artisan make:migration create_table_x</code> — cria arquivo de migration.</li>
+              <li><code>php artisan make:seeder NomeSeeder</code> — cria seeder para popular dados.</li>
+              <li><code>php artisan make:factory NomeFactory</code> — cria factory para dados de teste.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>Make avançado</h3>
+            <ul>
+              <li><code>php artisan make:job NomeJob</code> — cria classe Job para execução assíncrona.</li>
+              <li><code>php artisan make:listener NomeListener</code> — cria listener para eventos.</li>
+              <li><code>php artisan make:policy NomePolicy</code> — cria policy (autorização).</li>
+              <li><code>php artisan make:middleware NomeMiddleware</code> — cria middleware customizado.</li>
+              <li><code>php artisan make:test NomeTeste</code> — cria teste unitário/feature.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top:12px" class="note">Dica: Use o flag <code>--resource</code> para controllers quando for criar CRUDs — economiza muito tempo.</div>
+      </section>
+
+      <!-- MIGRATIONS -->
+      <section id="migrations" class="card">
+        <h2>Migrations — versionamento do banco</h2>
+        <p class="muted">Migrations permitem versionar a estrutura do banco (criar, alterar e reverter). Sempre escreva migrations para alterações de schema em vez de rodar queries manuais em produção.</p>
+
+        <h3>Exemplos úteis</h3>
+        <pre class="cmd"># criar tabela produtos
+php artisan make:migration create_produtos_table --create=produtos
+
+# adicionar coluna em tabela existente
+php artisan make:migration add_price_to_produtos_table --table=produtos
+
+# renomear tabela
+php artisan make:migration rename_produtos_to_items --table=produtos</pre>
+
+        <h3>Comandos de manutenção</h3>
+        <ul>
+          <li><code>php artisan migrate</code> — aplicar migrations.</li>
+          <li><code>php artisan migrate:rollback</code> — desfazer última batch.</li>
+          <li><code>php artisan migrate:fresh --seed</code> — recriar banco e rodar seeders (útil em testes locais).</li>
+        </ul>
+      </section>
+
+      <!-- SEEDERS -->
+      <section id="seeders" class="card">
+        <h2>Seeders & Factories</h2>
+        <p class="muted">Seeders e factories ajudam a popular o banco com dados de teste e fixtures.</p>
+        <pre class="cmd">php artisan make:seeder UsersSeeder
+php artisan make:factory UserFactory
+php artisan db:seed --class=UsersSeeder
+php artisan db:seed            # roda todos os seeders registrados</pre>
+
+        <div class="note">Recomendação: coloque os seeders mínimos necessários para desenvolvimento e use fixtures ou factories para testes automatizados.</div>
+      </section>
+
+      <!-- QUEUES -->
+      <section id="queues" class="card">
+        <h2>Filas (Queues) & Jobs</h2>
+        <p class="muted">Use filas para processar tarefas longas (envio de e-mails, integração com APIs, processamento de imagens). Laravel suporta diversos drivers (database, redis, sqs, etc.). :contentReference[oaicite:3]{index=3}</p>
+
+        <h3>Fluxo básico</h3>
+        <ol>
+          <li>Crie Job: <code>php artisan make:job ProcessOrder</code></li>
+          <li>Dispare job: <code>ProcessOrder::dispatch($order)</code></li>
+          <li>Worker em produção: <code>php artisan queue:work --daemon</code> (prefira supervisor/systemd para manter em execução)</li>
+        </ol>
+
+        <h3>Comandos úteis</h3>
+        <pre class="cmd">php artisan queue:work
+php artisan queue:listen
+php artisan queue:restart
+php artisan queue:failed
+php artisan queue:retry &lt;id&gt;
+php artisan queue:failed-table</pre>
+
+        <div class="note">Em produção, utilize Redis ou SQS para performance — o driver database é ok para desenvolvimento e projetos pequenos.</div>
+      </section>
+
+      <!-- EVENTS & TESTS -->
+      <section id="events-tests" class="card">
+        <h2>Eventos, Listeners & Testes</h2>
+        <div class="grid-2">
+          <div>
+            <h3>Eventos / Listeners</h3>
+            <ul>
+              <li><code>php artisan make:event UserRegistered</code></li>
+              <li><code>php artisan make:listener SendWelcomeEmail --event=UserRegistered</code></li>
+              <li><code>php artisan event:list</code> — ver eventos registrados</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Testes</h3>
+            <ul>
+              <li><code>php artisan make:test UserTest</code> — cria teste (Feature ou Unit flags)</li>
+              <li><code>php artisan test</code> — executa toda a suíte de testes (PHPUnit)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="note">Escreva testes para regras críticas: processos de pagamento, autorização e integrações externas.</div>
+      </section>
+
+      <!-- CACHING & PERFORMANCE -->
+      <section id="caching" class="card">
+        <h2>Cache & Otimização</h2>
+        <p class="muted">Comandos de cache são essenciais antes do deploy em produção (rotas, views, config). Use com atenção — não rode <code>config:cache</code> durante desenvolvimento sem atualizar o .env corretamente.</p>
+        <ul>
+          <li><code>php artisan config:cache</code></li>
+          <li><code>php artisan route:cache</code></li>
+          <li><code>php artisan view:cache</code></li>
+          <li><code>php artisan optimize</code> e <code>php artisan optimize:clear</code></li>
+        </ul>
+        <div class="note">Cache de rotas só é válido para rotas que usam closures? Se você usa Closures em rotas, route:cache pode falhar. Prefira controllers para rotas em produção.</div>
+      </section>
+
+      <!-- FILAMENT -->
+      <section id="filament" class="card">
+        <h2>Filament — painel administrativo</h2>
+        <p class="muted">Comandos básicos para instalar e criar recursos com Filament (painel admin). Considere instalar por projeto, não globalmente.</p>
+        <ul>
+          <li><code>composer require filament/filament:"^2.0"</code> — instalar por projeto</li>
+          <li><code>php artisan filament:install</code></li>
+          <li><code>php artisan filament:install --panels</code></li>
+          <li><code>php artisan make:filament-user</code> — cria admin pelo CLI</li>
+          <li><code>php artisan make:filament-resource Produto</code> — gera CRUD no painel</li>
+        </ul>
+        <div class="note">Evite <code>composer global require filament/filament</code> — prefira por projeto para controles de versão.</div>
+      </section>
+
+      <!-- BREEZE -->
+      <section id="breeze" class="card">
+        <h2>Breeze — autenticação leve</h2>
+        <p class="muted">Breeze é simples e rápido para começar com autenticação (login/register/forgot-password/profile).</p>
+        <pre class="cmd">composer require laravel/breeze --dev
+php artisan breeze:install blade
+php artisan migrate</pre>
+      </section>
+
+      <!-- DEPLOY -->
+      <section id="deploy" class="card">
+        <h2>Deploy & Produção</h2>
+        <p class="muted">Checklist e comandos para subir em produção com boa performance e segurança.</p>
+
+        <h3>Checklist antes do deploy</h3>
+        <ol>
+          <li>Configurar variáveis de ambiente (DB, MAIL, APP_ENV=production, APP_DEBUG=false).</li>
+          <li>Executar migrations e seeders controladamente (<code>php artisan migrate --force</code>).</li>
+          <li>Gerar caches: <code>php artisan config:cache</code>, <code>php artisan route:cache</code>, <code>php artisan view:cache</code>.</li>
+          <li>Rodar <code>composer install --no-dev --optimize-autoloader</code>.</li>
+          <li>Configurar supervisor/systemd para workers de queue, e cron para <code>schedule:run</code>.</li>
+        </ol>
+
+        <h3>Comandos úteis</h3>
+        <pre class="cmd">php artisan down               # modo manutenção
+php artisan up                 # sai do modo manutenção
+php artisan migrate --force    # força migração em produção
+composer install --no-dev --optimize-autoloader</pre>
+
+        <div class="note">Use <code>--force</code> com cuidado e somente em servidores controlados (CI/CD ou quando tiver backups e janela de manutenção).</div>
+      </section>
+
+      <!-- ROADMAP / ROTEIRO DE CARREIRA -->
+      <section id="roadmap" class="card">
+        <h2>Roteiro de Carreira / Projeto — do Zero ao Produto</h2>
+        <p class="muted">Um roteiro prático que você pode seguir para transformar aprendizado em projeto/produto real.</p>
+
+        <h3>Fase 1 — Fundamentos (1–2 semanas)</h3>
+        <ul>
+          <li>Ler docs básicos: routes, controllers, blade, Eloquent.</li>
+          <li>Comandos principais: <code>php artisan make:model</code>, <code>make:controller</code>, <code>make:migration</code>, <code>migrate</code>.</li>
+          <li>Prática: montar CRUD simples (produtos/categorias).</li>
+        </ul>
+
+        <h3>Fase 2 — Recursos e Estrutura (2–4 semanas)</h3>
+        <ul>
+          <li>Adicionar autenticação (Breeze), painel (Filament), teste básico.</li>
+          <li>Aprender filas (jobs), eventos, listeners.</li>
+          <li>Versionar ambiente: migrations + seeders + factories.</li>
+        </ul>
+
+        <h3>Fase 3 — Produção e Escala (4–8 semanas)</h3>
+        <ul>
+          <li>Configurar deploy (CI/CD), caching, otimização, supervisord para queues.</li>
+          <li>Métricas: logs, tratamento de exceptions, alertas.</li>
+          <li>Performance: usar Redis, cache de rotas/views, monitoramento.</li>
+        </ul>
+
+        <h3>Exemplo de fluxo de desenvolvimento (comandos)</h3>
+        <pre class="cmd"># iniciar projeto
+composer create-project laravel/laravel exemplo
+
+# criar recursos
+php artisan make:model Produto -m
+php artisan make:controller ProdutoController --resource
+
+# migration, seeder e popular
+php artisan migrate
+php artisan make:seeder ProdutoSeeder
+php artisan db:seed --class=ProdutoSeeder
+
+# autenticação
+composer require laravel/breeze --dev
+php artisan breeze:install blade
+php artisan migrate
+
+# deploy (em servidor)
+composer install --no-dev --optimize-autoloader
+php artisan migrate --force
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache</pre>
+      </section>
+
+      <!-- REFERÊNCIAS -->
+      <section id="ref" class="card">
+        <h2>Referências & Leituras recomendadas</h2>
+        <p class="muted">Principais fontes consultadas para montar este manual (documentação oficial e cheatsheets):</p>
+        <ul>
+          <li>Documentação oficial do Artisan — Laravel Docs. :contentReference[oaicite:4]{index=4}</li>
+          <li>Cheatsheet / Artisan page (coleção prática de comandos). :contentReference[oaicite:5]{index=5}</li>
+          <li>Gist / lista de make: comandos (exemplos e flags). :contentReference[oaicite:6]{index=6}</li>
+          <li>Queues — documentação (modelos e drivers). :contentReference[oaicite:7]{index=7}</li>
+          <li>Deploy & práticas (Deployer / artigos sobre otimização). :contentReference[oaicite:8]{index=8}</li>
+        </ul>
+
+        <div style="margin-top:12px" class="muted">Observação — as referências servem para confirmar opções, flags e comportamento especificado na versão do Laravel que você estiver usando.</div>
+      </section>
+
+      <footer>
+        <div class="muted">Arquivo gerado automaticamente com base nas suas instruções; personalize conforme necessidade. Deseja que eu gere uma versão em PDF ou uma versão com exemplos de código reais (migrations, controllers e seeders prontos) integrada neste documento?</div>
+      </footer>
+
+    </div>
+  </main>
+
+<script src="script.js"></script>
+</body>
+</html>
