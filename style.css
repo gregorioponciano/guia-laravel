@@ -1,7 +1,7 @@
  :root{
       --bg:#f5f7fb;
-      --nav:#11151a;
-      --accent:#4cafef;
+      --nav:#F53003;
+      --accent:#ffffff;
       --card:#ffffff;
       --muted:#6b7280;
       --mono: "Courier New", Courier, monospace;
@@ -15,7 +15,7 @@
       line-height:1.5;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
-    }
+    }     
 
     /* header */
     header{
@@ -24,7 +24,7 @@
       right:0;
       top:0;
       height:64px;
-      background:linear-gradient(90deg,#0f1724, #0b1220);
+      background-color: black;
       color:#fff;
       display:flex;
       align-items:center;
@@ -40,16 +40,20 @@
                 font-weight: bold;
                 font-size: 20px;
     }
-    header .brand{
+    .brand{
       display:flex;
       align-items:center;
       gap:12px;
       font-weight:600;
       letter-spacing:0.3px;
     }
-    header .brand .logo{
-      width:42px;height:42px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#6c9cff);
-      display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;
+    .logo{
+      width:42px;height:42px;border-radius:8px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-weight:700;
     }
     header .header-actions{color:#cbd5e1;font-size:14px}
 
@@ -78,8 +82,8 @@
       display:block;padding:10px 12px;margin:6px;border-radius:8px;text-decoration:none;color:inherit;
       transition:all .18s; font-size:14px;
     }
-    nav a.item:hover{ background:rgba(255,255,255,0.03); color:#fff; transform:translateX(4px); border-left:3px solid var(--accent); }
-    nav a.item.active{ background:rgba(255,255,255,0.04); color:#fff; border-left:3px solid var(--accent); }
+    nav a.item:hover{ background:rgb(26, 23, 23); color:#fff; transform:translateX(4px); border-left:3px solid var(--accent); }
+    nav a.item.active{ background:rgba(0, 0, 0, 0.856); color:#fff; border-left:3px solid var(--accent); }
 
     /* main content */
     main {
